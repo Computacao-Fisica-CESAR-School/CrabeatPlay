@@ -1,19 +1,31 @@
-String input = "100;125;52;40";
+import processing.serial.*;
+
+final int BAUDRATE = 9600;
+
+Serial serialPort;
+
+String input = "0;0;0;0";
 String[] sensors;
-int sAmplitude, s2, s3, s4;
+int sAmplitude, sRate, sJump, sNextMusic;
 
 void setup() {
+  String serialPortName = Serial.list()[0];
+  serialPort = new Serial(this, serialPortName, BAUDRATE);
 }
 
 void draw() {
-  sensors = split(input, ';');
+  if(serialPort.available() > 0) {
+    input = serialPort.readStringUntil('\n');
+    
+    sensors = split(input, ';');
   
-  sAmplitude = int(sensors[0]);
-  s2 = int(sensors[1]);
-  s3 = int(sensors[2]);
-  s4 = int(sensors[3]);
+    sAmplitude = int(sensors[0]);
+    sRate = int(sensors[1]);
+    sJump = int(sensors[2]);
+    sNextMusic = int(sensors[3]);
+  }
   
-  println(sAmplitude, s2, s3, s4);
+  println(sAmplitude, sRate, sJump, sNextMusic);
   
   delay(500);
 }
