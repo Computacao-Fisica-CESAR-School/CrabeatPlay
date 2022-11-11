@@ -2,27 +2,29 @@ import processing.sound.*;
 import processing.serial.*;
 
 
-SoundFile file_1; 
-SoundFile file_2;
+SoundFile[] file;
+int nMusicas = 2; //A quantidade de musicas da playlist
 
 Serial serialPort;
 
 final int BAUDRATE = 9600;
-float voltar = 0.5; // Tempo em segundos que a musica vai voltar na função jump()
+
 
 String input; // variavel tipo String que recebe o dado dos ultrassom
 String[] sensors; // Vetor que vai receber o split dos dados do arduino
 
-String sAmplitude, sRate, sJump, sNextMusic; // Declaara as variaveis que serão usadas para controle das funções
+String sAmplitude, sRate, sJump, sNextMusic; // Declara as variaveis que serão usadas para controle das funções
 
 void setup(){
   String serialPortName = Serial.list()[0]; // Vai usar o arduino [0] para pegar o input
   serialPort = new Serial(this, serialPortName, BAUDRATE);
   
-  file_1 = new SoundFile(this, "3-POR-10.wav"); // Vai colocar a musica dentro da variavel (trocar arquivo de musica)
-  file_2 = new SoundFile(this, "MIRAGEM.wav");
+  file = new SoundFile[nMusicas]; // Cria uma lista de arquivos de musicas com a quantidade de musicas desejada
+  file[0] = new SoundFile(this, "3-POR-10.wav"); // Vai colocar a musica dentro do item 0 da lista
+  file[1] = new SoundFile(this, "MIRAGEM.wav"); // Vai colocar a musica dentro do item 1 da lista
+  // Adicionar mais musicas à playlist
   
-  file_1.loop();
+  file[0].loop(); // Inicia o loop da musica
 }
 
 void draw(){
@@ -44,14 +46,14 @@ void draw(){
     
   }
    //Trocar de musica
-    blink();
+    int i = passaMusica(nMusicas);
    
    //Amplitude
-    ampliar();
+    ampliar(i);
   
     //Jump
-    jumpear();
+    jumpear(i);
     
     //Feature Rate
-    ratear();
+    ratear(i);
 }
