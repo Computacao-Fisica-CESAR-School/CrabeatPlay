@@ -59,7 +59,6 @@ void blink(){
     previousMillis = currentMillis;
     
     if(float(sNextMusic) <= 10){
-     print("caraio alek");
       if (taTocando(file_1)){
         file_2.play();
       }else if (taTocando(file_2)){
