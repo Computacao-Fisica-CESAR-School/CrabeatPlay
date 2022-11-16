@@ -42,8 +42,8 @@ void draw(){
     if (sensors != null && sensors.length == 4){ // Caso "sensors" for diferente de null (vazio) e seu tamano for de 4 itens...
     
       sAmplitude = sensors[0]; // Coloca o item 0 na variavel que será usada para amplitude (volume)
-      sRate = sensors[1]; // Coloca o item 1 na variavel que será usada para rate (velocidade)
-      sJump = sensors[2]; // Coloca o item 2 na variavel que será usada para jump (faz a musica ir até um ponto especifico, nesse caso, voltar 0.5seg)
+      sRate = sensors[2]; // Coloca o item 1 na variavel que será usada para rate (velocidade)
+      sJump = sensors[1]; // Coloca o item 2 na variavel que será usada para jump (faz a musica ir até um ponto especifico, nesse caso, voltar 0.5seg)
       sNextMusic = sensors[3]; // Coloca o item 3 na variavel que será usada para trocar de musica
       print(sensors); // Essa linha é usada apenas para acompanharmos os valores dos sensores    
   
