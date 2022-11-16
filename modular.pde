@@ -2,11 +2,11 @@ void ratear(int musicaAtual){
   
   if(float(sRate) < 8){ // Caso o valor lido (sRate) for menor que 8...
     sRate = "8"; // Altera o valor para 8
-  }else if(float(sRate) > 130){ // Caso o valor lido (sRate) for maior que 130...
-    sRate = "130"; // Altera o valor para 130
+  }else if(float(sRate) > 65){ // Caso o valor lido (sRate) for maior que 130...
+    sRate = "65"; // Altera o valor para 130
   }
 
-  file[musicaAtual].rate(map(float(sRate), 8, 130, 2, 1)); // Altera a velocidade de acordo com a distancia do sensor...
+  file[musicaAtual].rate(map(float(sRate), 8, 65, 2, 1)); // Altera a velocidade de acordo com a distancia do sensor...
   // (8, 130) - valor mais proximo e mais distante do sensor
   // (2, 1) - Valor max e min da velocidade (lembrando que entre 2 e 1 existem infinitos numeros)
   
@@ -15,7 +15,7 @@ void ratear(int musicaAtual){
 
 void jumpear(int musicaAtual){
   
-  float voltar = 0.5; // Tempo em segundos que a musica vai voltar
+  float voltar = 2; // Tempo em segundos que a musica vai voltar
   float tempoAtual = file[musicaAtual].position(); //Tempo atual da musica
   
   tempoAtual = tempoAtual - voltar; 
@@ -47,7 +47,7 @@ int i = 0; // Variavel usado para definir qual musica está tocando no momento
 int passaMusica(int numeroMusicas){
   
   if (float(sNextMusic) <= 8){ // Caso a distancia medida pelo sensor for menor que 10cm...
-    if (millis() - tempoAnterior >= 2000){ // Caso o millis() (tempo atual em milissegundos) menos o tempoAnterior for menor que 2000 milissegundos (2 segundos)...
+    if (millis() - tempoAnterior >= 1500){ // Caso o millis() (tempo atual em milissegundos) menos o tempoAnterior for menor que 2000 milissegundos (2 segundos)...
       tempoAnterior = millis(); //A variavel "tempoAnterior" recebe o tempo atual (millis())
       file[i].pause(); //Pausa a musica atual
       if (i == numeroMusicas-1){ //Caso i ja for igual ao total de musicas...
