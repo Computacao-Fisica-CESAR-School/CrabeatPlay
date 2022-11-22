@@ -10,7 +10,6 @@ Serial serialPort; // Cria a variavel do tipo Serial (responsavel pela comunica�
 
 final int BAUDRATE = 9600; // Define a frenquencia da comunicação serial (tem que estar igual no arduino)
 
-
 String input; // variavel tipo String que recebe o dado dos ultrassom
 String[] sensors; // Vetor que vai receber o split dos dados do arduino
 

@@ -60,5 +60,4 @@ int passaMusica(int numeroMusicas){
   }
   
   return i; // Retorna o valor de i para ser usado nas outras funções
-  
 }
